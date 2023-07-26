@@ -1,11 +1,7 @@
 import sys
 
 from PyQt5.QtCore import QSize, Qt
-from PyQt5.QtWidgets import QApplication, QMainWindow, QPushButton, QVBoxLayout, QWidget
-
-
-def button_pressed():
-    print('Weeee!')
+from PyQt5.QtWidgets import QApplication, QMainWindow, QPushButton, QVBoxLayout, QWidget, QLabel, QLineEdit
 
 
 class MyWindow(QMainWindow):
@@ -13,16 +9,22 @@ class MyWindow(QMainWindow):
         super().__init__()
 
         self.setWindowTitle("Testapplikation")
-        button = QPushButton("Drücke mich!")
+        self.button = QPushButton("Drücke mich!")
+        self.label = QLabel('Das ist ein Label.')
+        self.textfield = QLineEdit()
 
         layout = QVBoxLayout()
-        layout.addWidget(button)
+        layout.addWidget(self.label)
+        layout.addWidget(self.textfield)
+        layout.addWidget(self.button)
+
         widget = QWidget()
         self.setCentralWidget(widget)
         widget.setLayout(layout)
-        button.clicked.connect(button_pressed)
+        self.button.clicked.connect(self.button_pressed)
 
-        # self.setLayout(layout)
+    def button_pressed(self):
+        self.textfield.setText('Something has happened.')
 
 
 if __name__ == '__main__':
