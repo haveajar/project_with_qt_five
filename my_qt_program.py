@@ -2,6 +2,7 @@ import sys
 
 from PyQt5.QtCore import QSize, Qt
 from PyQt5.QtWidgets import QApplication, QMainWindow, QPushButton, QVBoxLayout, QWidget, QLabel, QLineEdit
+import morse_code_translator
 
 
 class MyWindow(QMainWindow):
@@ -29,6 +30,8 @@ class MyWindow(QMainWindow):
 
 
 if __name__ == '__main__':
+    my_morse = morse_code_translator.return_translation_into_morse("This is a test")
+    print(my_morse)
     app = QApplication(sys.argv)
     window = MyWindow()
     window.show()
