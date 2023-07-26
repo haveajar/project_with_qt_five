@@ -9,15 +9,16 @@ class MyWindow(QMainWindow):
     def __init__(self):
         super().__init__()
 
-        self.setWindowTitle("Testapplikation")
-        self.button = QPushButton("Drücke mich!")
-        self.label = QLabel('Das ist ein Label.')
+        self.setWindowTitle('Morse-Code-Übersetzer')
+        self.button = QPushButton('Übersetzen')
+        self.label = QLabel('Morse-Code')
         self.textfield = QLineEdit()
 
         layout = QVBoxLayout()
-        layout.addWidget(self.label)
+
         layout.addWidget(self.textfield)
         layout.addWidget(self.button)
+        layout.addWidget(self.label)
 
         widget = QWidget()
         self.setCentralWidget(widget)
