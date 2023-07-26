@@ -24,7 +24,8 @@ class MyWindow(QMainWindow):
         self.button.clicked.connect(self.button_pressed)
 
     def button_pressed(self):
-        self.textfield.setText('Something has happened.')
+        my_text = self.textfield.text()
+        self.label.setText(my_text)
 
 
 if __name__ == '__main__':
