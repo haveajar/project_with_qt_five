@@ -26,7 +26,8 @@ class MyWindow(QMainWindow):
 
     def button_pressed(self):
         my_text = self.textfield.text()
-        self.label.setText(my_text)
+        my_translation = morse_code_translator.return_translation_into_morse(my_text)
+        self.label.setText(my_translation)
 
 
 if __name__ == '__main__':
