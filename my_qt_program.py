@@ -1,7 +1,7 @@
 import sys
 
 from PyQt5.QtCore import QSize, Qt
-from PyQt5.QtWidgets import QApplication, QMainWindow, QPushButton
+from PyQt5.QtWidgets import QApplication, QMainWindow, QPushButton, QVBoxLayout, QWidget
 
 
 def button_pressed():
@@ -14,8 +14,15 @@ class MyWindow(QMainWindow):
 
         self.setWindowTitle("Testapplikation")
         button = QPushButton("Drücke mich!")
-        self.setCentralWidget(button)
+
+        layout = QVBoxLayout()
+        layout.addWidget(button)
+        widget = QWidget()
+        self.setCentralWidget(widget)
+        widget.setLayout(layout)
         button.clicked.connect(button_pressed)
+
+        # self.setLayout(layout)
 
 
 if __name__ == '__main__':
