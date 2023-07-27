@@ -1,7 +1,7 @@
 import sys
 
 from PyQt5.QtCore import QSize, Qt
-from PyQt5.QtWidgets import QApplication, QMainWindow, QPushButton, QVBoxLayout, QWidget, QLabel, QLineEdit
+from PyQt5.QtWidgets import QApplication, QMainWindow, QPushButton, QVBoxLayout, QWidget, QLabel, QLineEdit, QRadioButton
 import morse_code_translator
 
 
@@ -10,12 +10,15 @@ class MyWindow(QMainWindow):
         super().__init__()
 
         self.setWindowTitle('Morse-Code-Übersetzer')
+        self.morse_to_plaintext_button = QRadioButton('Morsecode in Fließtext übersetzen')
+        self.plaintext_to_morse_button = QRadioButton('Fließtext in Morsecode übersetzen')
         self.button = QPushButton('Übersetzen')
         self.label = QLabel('Morse-Code')
         self.textfield = QLineEdit()
 
         layout = QVBoxLayout()
-
+        layout.addWidget(self.plaintext_to_morse_button)
+        layout.addWidget(self.morse_to_plaintext_button)
         layout.addWidget(self.textfield)
         layout.addWidget(self.button)
         layout.addWidget(self.label)
