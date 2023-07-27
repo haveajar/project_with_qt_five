@@ -30,13 +30,17 @@ class MyWindow(QMainWindow):
 
     def button_pressed(self):
         my_text = self.textfield.text()
-        my_translation = morse_code_translator.return_translation_into_morse(my_text)
+        if self.plaintext_to_morse_button.isChecked():
+            print('Plaintext to morse button pressed.')
+            my_translation = morse_code_translator.return_translation_into_morse(my_text)
+        elif self.morse_to_plaintext_button.isChecked():
+            print('Morse to plaintext button pressed.')
+        else:
+            my_translation = 'Es wurde kein Übersetzungsmodus gewählt.'
         self.label.setText(my_translation)
 
 
 if __name__ == '__main__':
-    my_morse = morse_code_translator.return_translation_into_morse("This is a test")
-    print(my_morse)
     app = QApplication(sys.argv)
     window = MyWindow()
     window.show()
