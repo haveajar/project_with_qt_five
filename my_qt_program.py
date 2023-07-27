@@ -10,9 +10,6 @@ from PyQt5.QtWidgets import QApplication, QMainWindow, QPushButton, QVBoxLayout,
 import morse_code_translator
 
 
-# TODO: GUI so verändern, dass bei Veränderung der RadioButtons das Textfeld gelöscht wird.
-
-
 class MyWindow(QMainWindow):
     def __init__(self):
         super().__init__()
@@ -28,7 +25,6 @@ class MyWindow(QMainWindow):
 
         self.button = QPushButton('Übersetzen')
         self.button.setFixedSize(150, 50)
-        # self.button.setAlignment(Qt.AlignVCenter)
 
         self.label = QLabel()
         self.label.setMargin(10)
@@ -36,8 +32,6 @@ class MyWindow(QMainWindow):
 
         self.textfield = QLineEdit()
         self.textfield.setAlignment(Qt.AlignVCenter)
-        # setContentMargins()
-        # textChanged()
 
         layout = QVBoxLayout()
         layout.addWidget(self.plaintext_to_morse_button)
@@ -45,6 +39,7 @@ class MyWindow(QMainWindow):
         layout.addWidget(self.textfield)
         layout.addWidget(self.button, alignment=QtCore.Qt.AlignCenter)
         layout.addWidget(self.label, alignment=QtCore.Qt.AlignCenter)
+        layout.setContentsMargins(20, 20, 20, 20)
 
         widget = QWidget()
         self.setCentralWidget(widget)
