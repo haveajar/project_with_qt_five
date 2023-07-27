@@ -2,6 +2,7 @@ import sys
 
 from PyQt5 import QtCore
 from PyQt5.QtCore import QSize, Qt
+from PyQt5.QtGui import QFont
 # TODO: Why can I not use this import and have to import the above QtCore library again for the button alignment to
 #  work? The world wonders.
 from PyQt5.QtWidgets import QApplication, QMainWindow, QPushButton, QVBoxLayout, QWidget, QLabel, QLineEdit, \
@@ -29,8 +30,9 @@ class MyWindow(QMainWindow):
         self.button.setFixedSize(150, 50)
         # self.button.setAlignment(Qt.AlignVCenter)
 
-        self.label = QLabel('Morse-Code')
+        self.label = QLabel()
         self.label.setMargin(10)
+        self.label.setFont(QFont('Times New Roman', 18))
 
         self.textfield = QLineEdit()
         self.textfield.setAlignment(Qt.AlignVCenter)
@@ -42,7 +44,7 @@ class MyWindow(QMainWindow):
         layout.addWidget(self.morse_to_plaintext_button)
         layout.addWidget(self.textfield)
         layout.addWidget(self.button, alignment=QtCore.Qt.AlignCenter)
-        layout.addWidget(self.label)
+        layout.addWidget(self.label, alignment=QtCore.Qt.AlignCenter)
 
         widget = QWidget()
         self.setCentralWidget(widget)
