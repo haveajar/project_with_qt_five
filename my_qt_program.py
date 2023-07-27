@@ -9,6 +9,9 @@ from PyQt5.QtWidgets import QApplication, QMainWindow, QPushButton, QVBoxLayout,
 import morse_code_translator
 
 
+# TODO: GUI so verändern, dass bei Veränderung der RadioButtons das Textfeld gelöscht wird.
+
+
 class MyWindow(QMainWindow):
     def __init__(self):
         super().__init__()
@@ -16,8 +19,10 @@ class MyWindow(QMainWindow):
         self.setWindowTitle('Morse-Code-Übersetzer')
 
         self.morse_to_plaintext_button = QRadioButton('Morsecode in Fließtext übersetzen')
+        self.morse_to_plaintext_button.clicked.connect(self.radio_button_clicked)
 
         self.plaintext_to_morse_button = QRadioButton('Fließtext in Morsecode übersetzen')
+        self.plaintext_to_morse_button.clicked.connect(self.radio_button_clicked)
 
         self.button = QPushButton('Übersetzen')
         self.button.setFixedSize(150, 50)
@@ -54,6 +59,10 @@ class MyWindow(QMainWindow):
         else:
             my_translation = 'Es wurde kein Übersetzungsmodus gewählt.'
         self.label.setText(my_translation)
+
+    def radio_button_clicked(self):
+        self.textfield.setText('')
+        print('The RadioButton input has changed.')
 
 
 if __name__ == '__main__':
