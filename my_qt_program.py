@@ -18,11 +18,12 @@ class MyWindow(QMainWindow):
 
         self.setWindowTitle('Morse-Code-Übersetzer')
 
-        self.morse_to_plaintext_button = QRadioButton('Morsecode in Fließtext übersetzen')
-        self.morse_to_plaintext_button.clicked.connect(self.radio_button_clicked)
-
         self.plaintext_to_morse_button = QRadioButton('Fließtext in Morsecode übersetzen')
         self.plaintext_to_morse_button.clicked.connect(self.radio_button_clicked)
+        self.plaintext_to_morse_button.setChecked(True)
+
+        self.morse_to_plaintext_button = QRadioButton('Morsecode in Fließtext übersetzen')
+        self.morse_to_plaintext_button.clicked.connect(self.radio_button_clicked)
 
         self.button = QPushButton('Übersetzen')
         self.button.setFixedSize(150, 50)
