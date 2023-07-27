@@ -3,12 +3,12 @@ import sys
 from PyQt5 import QtCore
 from PyQt5.QtCore import QSize, Qt
 from PyQt5.QtGui import QFont
-# TODO: Why can I not use this import and have to import the above QtCore library again for the button alignment to
-#  work? The world wonders.
 from PyQt5.QtWidgets import QApplication, QMainWindow, QPushButton, QVBoxLayout, QWidget, QLabel, QLineEdit, \
     QRadioButton
 import morse_code_translator
 
+
+# TODO: Möglichkeit, Output in Zwischenablage zu kopieren
 
 class MyWindow(QMainWindow):
     def __init__(self):
