@@ -7,7 +7,8 @@ from PyQt5.QtWidgets import QApplication, QMainWindow, QPushButton, QVBoxLayout,
     QRadioButton
 import morse_code_translator
 
-# TODO: Möglichkeit, Output in Zwischenablage zu kopieren
+
+# TODO: Bei Eingabe bei falschem Übersetzngsmodus automatisch Modus umstellen
 
 
 class MyWindow(QMainWindow):
@@ -43,7 +44,7 @@ class MyWindow(QMainWindow):
         layout.addWidget(self.translate_button, alignment=QtCore.Qt.AlignCenter)
         layout.addWidget(self.label, alignment=QtCore.Qt.AlignCenter)
         layout.addWidget(self.copy_button, alignment=QtCore.Qt.AlignCenter)
-        layout.setContentsMargins(20, 20, 20, 20)
+        layout.setContentsMargins(30, 20, 30, 20)
 
         widget = QWidget()
         self.setCentralWidget(widget)
@@ -54,8 +55,9 @@ class MyWindow(QMainWindow):
     def translate_button_pressed(self):
         my_text = self.textfield.text()
         if self.plaintext_to_morse_button.isChecked():
-            print('Plaintext to morse button pressed.')
-            my_translation = morse_code_translator.return_translation_into_morse(my_text)
+            if not self.check_for_morse_code_in_plaintext():
+                print('Plaintext to morse button pressed.')
+                my_translation = morse_code_translator.return_translation_into_morse(my_text)
         elif self.morse_to_plaintext_button.isChecked():
             print('Morse to plaintext button pressed.')
             my_translation = morse_code_translator.return_translation_into_text(my_text)
@@ -69,6 +71,18 @@ class MyWindow(QMainWindow):
         clip_text = self.label.text()
         clipboard.setText(clip_text)
         print(clipboard.text())
+
+    def check_for_morse_code_in_plaintext(self):
+        print(self.textfield.text())
+        forbidden_letters = ['-', '.', '/']
+        for element in forbidden_letters:
+            if element in self.textfield.text():
+                print('Da sind Morsezeichen drin')
+                return True
+        return False
+
+    def check_for_plaintext_in_morse_code(self):
+        pass
 
     def radio_button_clicked(self):
         self.textfield.setText('')
