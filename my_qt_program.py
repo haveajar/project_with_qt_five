@@ -55,8 +55,10 @@ class MyWindow(QMainWindow):
     def translate_button_pressed(self):
         my_text = self.textfield.text()
 
-        if self.check_for_morse_code_in_plaintext():
+        if self.morse_code_in_textfield():
             self.morse_to_plaintext_button.setChecked(True)
+        if self.plaintext_in_textfield():
+            self.plaintext_to_morse_button.setChecked(True)
 
         if self.plaintext_to_morse_button.isChecked():
             print('Plaintext to morse button pressed.')
@@ -73,7 +75,7 @@ class MyWindow(QMainWindow):
         clipboard.setText(clip_text)
         print(clipboard.text())
 
-    def check_for_morse_code_in_plaintext(self):
+    def morse_code_in_textfield(self):
         print(self.textfield.text())
         forbidden_letters = ['-', '.', '/']
         for element in forbidden_letters:
@@ -82,8 +84,11 @@ class MyWindow(QMainWindow):
                 return True
         return False
 
-    def check_for_plaintext_in_morse_code(self):
-        pass
+    def plaintext_in_textfield(self):
+        print('There are letters in the input string')
+        if self.textfield.text().isalpha():
+            return True
+        return False
 
     def radio_button_clicked(self):
         self.textfield.setText('')
