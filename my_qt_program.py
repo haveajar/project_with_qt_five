@@ -7,8 +7,9 @@ from PyQt5.QtWidgets import QApplication, QMainWindow, QPushButton, QVBoxLayout,
     QRadioButton
 import morse_code_translator
 
-
 # TODO: Möglichkeit, Output in Zwischenablage zu kopieren
+clipboard = QApplication.clipboard()
+
 
 class MyWindow(QMainWindow):
     def __init__(self):
@@ -65,6 +66,8 @@ class MyWindow(QMainWindow):
 
     def copy_button_pressed(self):
         print('Copy button was pressed.')
+        clip_text = self.textfield.text()
+        print(clip_text)
 
     def radio_button_clicked(self):
         self.textfield.setText('')
