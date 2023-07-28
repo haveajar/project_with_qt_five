@@ -54,14 +54,14 @@ class MyWindow(QMainWindow):
 
     def translate_button_pressed(self):
         my_text = self.textfield.text()
+
+        if self.check_for_morse_code_in_plaintext():
+            self.morse_to_plaintext_button.setChecked(True)
+
         if self.plaintext_to_morse_button.isChecked():
-            if self.check_for_morse_code_in_plaintext():
-                self.morse_to_plaintext_button.setChecked(True)
-                my_translation = morse_code_translator.return_translation_into_text(my_text)
-            else:
-                print('Plaintext to morse button pressed.')
-                my_translation = morse_code_translator.return_translation_into_morse(my_text)
-        elif self.morse_to_plaintext_button.isChecked():
+            print('Plaintext to morse button pressed.')
+            my_translation = morse_code_translator.return_translation_into_morse(my_text)
+        else:
             print('Morse to plaintext button pressed.')
             my_translation = morse_code_translator.return_translation_into_text(my_text)
         self.label.setText(my_translation)
