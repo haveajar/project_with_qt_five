@@ -48,9 +48,10 @@ class MyWindow(QMainWindow):
         widget = QWidget()
         self.setCentralWidget(widget)
         widget.setLayout(layout)
-        self.translate_button.clicked.connect(self.button_pressed)
+        self.translate_button.clicked.connect(self.translate_button_pressed)
+        self.copy_button.clicked.connect(self.copy_button_pressed)
 
-    def button_pressed(self):
+    def translate_button_pressed(self):
         my_text = self.textfield.text()
         if self.plaintext_to_morse_button.isChecked():
             print('Plaintext to morse button pressed.')
@@ -61,6 +62,9 @@ class MyWindow(QMainWindow):
         else:
             my_translation = 'Es wurde kein Übersetzungsmodus gewählt.'
         self.label.setText(my_translation)
+
+    def copy_button_pressed(self):
+        print('Copy button was pressed.')
 
     def radio_button_clicked(self):
         self.textfield.setText('')
