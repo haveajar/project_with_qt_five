@@ -58,6 +58,8 @@ class MyWindow(QMainWindow):
             if not self.check_for_morse_code_in_plaintext():
                 print('Plaintext to morse button pressed.')
                 my_translation = morse_code_translator.return_translation_into_morse(my_text)
+            else:
+                self.morse_to_plaintext_button.setChecked(True)
         elif self.morse_to_plaintext_button.isChecked():
             print('Morse to plaintext button pressed.')
             my_translation = morse_code_translator.return_translation_into_text(my_text)
