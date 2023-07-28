@@ -26,7 +26,7 @@ class MyWindow(QMainWindow):
         self.translate_button = QPushButton('Übersetzen')
         self.translate_button.setFixedSize(150, 50)
 
-        self.copy_button = QPushButton('Kopieren')
+        self.copy_button = QPushButton('Übersetzung Kopieren')
         self.copy_button.setFixedSize(150, 25)
 
         self.label = QLabel()
@@ -41,8 +41,8 @@ class MyWindow(QMainWindow):
         layout.addWidget(self.morse_to_plaintext_button)
         layout.addWidget(self.textfield)
         layout.addWidget(self.translate_button, alignment=QtCore.Qt.AlignCenter)
-        layout.addWidget(self.copy_button, alignment=QtCore.Qt.AlignCenter)
         layout.addWidget(self.label, alignment=QtCore.Qt.AlignCenter)
+        layout.addWidget(self.copy_button, alignment=QtCore.Qt.AlignCenter)
         layout.setContentsMargins(20, 20, 20, 20)
 
         widget = QWidget()
@@ -66,7 +66,7 @@ class MyWindow(QMainWindow):
     def copy_button_pressed(self):
         print('Copy button was pressed.')
         clipboard = QApplication.clipboard()
-        clip_text = self.textfield.text()
+        clip_text = self.label.text()
         clipboard.setText(clip_text)
         print(clipboard.text())
 
