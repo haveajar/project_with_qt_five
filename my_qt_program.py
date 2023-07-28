@@ -2,7 +2,7 @@ import sys
 
 from PyQt5 import QtCore
 from PyQt5.QtCore import QSize, Qt
-from PyQt5.QtGui import QFont
+from PyQt5.QtGui import QFont, QClipboard
 from PyQt5.QtWidgets import QApplication, QMainWindow, QPushButton, QVBoxLayout, QWidget, QLabel, QLineEdit, \
     QRadioButton
 import morse_code_translator
@@ -23,8 +23,11 @@ class MyWindow(QMainWindow):
         self.morse_to_plaintext_button = QRadioButton('Morsecode in Fließtext übersetzen')
         self.morse_to_plaintext_button.clicked.connect(self.radio_button_clicked)
 
-        self.button = QPushButton('Übersetzen')
-        self.button.setFixedSize(150, 50)
+        self.translate_button = QPushButton('Übersetzen')
+        self.translate_button.setFixedSize(150, 50)
+
+        self.copy_button = QPushButton('Kopieren')
+        self.copy_button.setFixedSize(150, 25)
 
         self.label = QLabel()
         self.label.setMargin(10)
@@ -37,14 +40,15 @@ class MyWindow(QMainWindow):
         layout.addWidget(self.plaintext_to_morse_button)
         layout.addWidget(self.morse_to_plaintext_button)
         layout.addWidget(self.textfield)
-        layout.addWidget(self.button, alignment=QtCore.Qt.AlignCenter)
+        layout.addWidget(self.translate_button, alignment=QtCore.Qt.AlignCenter)
+        layout.addWidget(self.copy_button, alignment=QtCore.Qt.AlignCenter)
         layout.addWidget(self.label, alignment=QtCore.Qt.AlignCenter)
         layout.setContentsMargins(20, 20, 20, 20)
 
         widget = QWidget()
         self.setCentralWidget(widget)
         widget.setLayout(layout)
-        self.button.clicked.connect(self.button_pressed)
+        self.translate_button.clicked.connect(self.button_pressed)
 
     def button_pressed(self):
         my_text = self.textfield.text()
