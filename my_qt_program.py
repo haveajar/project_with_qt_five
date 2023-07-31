@@ -8,9 +8,6 @@ from PyQt5.QtWidgets import QApplication, QMainWindow, QPushButton, QVBoxLayout,
 import morse_code_translator
 
 
-# TODO: Bei Eingabe bei falschem Übersetzngsmodus automatisch Modus umstellen
-
-
 class MyWindow(QMainWindow):
     def __init__(self):
         super().__init__()
