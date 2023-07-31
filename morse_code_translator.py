@@ -25,7 +25,10 @@ def morse_to_text_gen(morse_text):
     inverted_dict = invert_dictionary(morse_code_table)
     letters = morse_text.split(' ')
     for character in letters:
-        inverted_character = inverted_dict[character]
+        try:
+            inverted_character = inverted_dict[character]
+        except KeyError:
+            print('')
         yield inverted_character
 
 
@@ -33,14 +36,14 @@ def return_translation_into_morse(my_message):
     my_translation = ''
     for code in text_to_morse_gen(my_message):
         my_translation = my_translation + code + ' '
-    return my_translation
+    return my_translation.strip()
 
 
 def return_translation_into_text(my_message):
     my_plaintext = ''
     for letter in morse_to_text_gen(my_message):
         my_plaintext = my_plaintext + letter
-    return my_plaintext
+    return my_plaintext.strip()
 
 
 # main
