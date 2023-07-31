@@ -4,7 +4,7 @@ from PyQt5 import QtCore
 from PyQt5.QtCore import QSize, Qt
 from PyQt5.QtGui import QFont, QClipboard
 from PyQt5.QtWidgets import QApplication, QMainWindow, QPushButton, QVBoxLayout, QWidget, QLabel, QLineEdit, \
-    QRadioButton
+    QRadioButton, QMessageBox
 import morse_code_translator
 
 
@@ -99,6 +99,12 @@ class MyWindow(QMainWindow):
 
     def something_went_wrong(self):
         print('Something went wrong!')
+        err_msg = QMessageBox()
+        err_msg.setIcon(QMessageBox.Critical)
+        err_msg.setText('Irgendwas ist schiefgegangen!')
+        err_msg.setInformativeText('Sorry...')
+        err_msg.setWindowTitle('Error')
+        err_msg.exec_()
 
 
 if __name__ == '__main__':
