@@ -112,7 +112,4 @@ if __name__ == '__main__':
     window = MyWindow()
     window.show()
 
-    # THIS IS A CALL OF THE METHOD FOR TESTING PURPOSES!
-    MyWindow.something_went_wrong(self=MyWindow)
-
     app.exec()
