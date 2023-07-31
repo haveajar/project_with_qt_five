@@ -62,10 +62,16 @@ class MyWindow(QMainWindow):
 
         if self.plaintext_to_morse_button.isChecked():
             print('Plaintext to morse button pressed.')
-            my_translation = morse_code_translator.return_translation_into_morse(my_text)
+            try:
+                my_translation = morse_code_translator.return_translation_into_morse(my_text)
+            except KeyError:
+                print('Something went wrong!')
         else:
             print('Morse to plaintext button pressed.')
-            my_translation = morse_code_translator.return_translation_into_text(my_text)
+            try:
+                my_translation = morse_code_translator.return_translation_into_text(my_text)
+            except KeyError:
+                print('Something went wrong!')
         self.label.setText(my_translation)
 
     def copy_button_pressed(self):
