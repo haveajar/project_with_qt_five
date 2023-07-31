@@ -62,13 +62,13 @@ class MyWindow(QMainWindow):
             try:
                 my_translation = morse_code_translator.return_translation_into_morse(my_text)
             except KeyError:
-                print('Something went wrong!')
+                self.something_went_wrong()
         else:
             print('Morse to plaintext button pressed.')
             try:
                 my_translation = morse_code_translator.return_translation_into_text(my_text)
             except KeyError:
-                print('Something went wrong!')
+                self.something_went_wrong()
         self.label.setText(my_translation)
 
     def copy_button_pressed(self):
@@ -97,10 +97,16 @@ class MyWindow(QMainWindow):
         self.textfield.setText('')
         print('The RadioButton input has changed.')
 
+    def something_went_wrong(self):
+        print('Something went wrong!')
+
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
     window = MyWindow()
     window.show()
+
+    # THIS IS A CALL OF THE METHOD FOR TESTING PURPOSES!
+    MyWindow.something_went_wrong(self=MyWindow)
 
     app.exec()
